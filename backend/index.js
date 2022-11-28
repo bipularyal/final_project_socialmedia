@@ -9,21 +9,41 @@ const morgan = require("morgan");
 const users_route = require('./routes/users.js')
 const auth_route = require('./routes/authentication.js')
 var bodyParser = require('body-parser')
+const multer = require('multer')
+const path = require("path")
 // configuring dotenv for envrionment variables
 dotenv.config();
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 // connecting to db
 
 // middlewareN
 app.use(express());
 app.use(helmet());
 app.use(morgan('common'));
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/files");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+});
+const upload = multer({ storage: storage });
+
 // when we go to this page ... usersroute is run
 app.use('/api/user',users_route)
 app.use('/register',auth_route)
 
-
+app.post("/api/upload",upload.single("file"),(req,res)=>{
+  try{
+    return res.status(200).json("file uploaded sucessfully")
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 app.get('/',(req,res)=>{
     res.send('welcome to homepage')
 })
@@ -34,3 +54,7 @@ mongoose
   .connect(dbUrl)
   .then(() => app.listen(3001, () => console.log("Listening to Port 3001...")))
   .catch((err) => console.log(err));
+
+
+// if we use /files as path name ... go to public/images instead of making a get request
+app.use("/files",express.static.join(__dirname,"public/images"))
