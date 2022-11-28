@@ -9,10 +9,10 @@ const morgan = require("morgan");
 const users_route = require('./routes/users.js')
 const auth_route = require('./routes/authentication.js')
 var bodyParser = require('body-parser')
+const upload = multer()
 // configuring dotenv for envrionment variables
 dotenv.config();
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 // connecting to db
 
 // middlewareN
@@ -23,7 +23,14 @@ app.use(morgan('common'));
 app.use('/api/user',users_route)
 app.use('/register',auth_route)
 
-
+app.post("api/upload",upload.single("file",(req,res)=>{
+  try{
+    return res.status(200).json("file uploaded sucessfully")
+  }
+  catch(err){
+    console.log(err)
+  }
+}))
 app.get('/',(req,res)=>{
     res.send('welcome to homepage')
 })
