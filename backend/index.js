@@ -15,8 +15,9 @@ const path = require("path")
 dotenv.config();
 
 // connecting to db
+ 
 
-// middlewareN
+// middleware
 app.use(express());
 app.use(helmet());
 app.use(morgan('common'));
