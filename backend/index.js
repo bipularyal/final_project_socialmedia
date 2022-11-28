@@ -57,4 +57,4 @@ mongoose
 
 
 // if we use /files as path name ... go to public/images instead of making a get request
-app.use("/files",express.static.join(__dirname,"public/images"))
+app.use("/files",express.static(path.join(__dirname,"public/images")))
