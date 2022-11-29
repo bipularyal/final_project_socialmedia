@@ -6,7 +6,7 @@ var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 //REGISTER a new user
 router.post("/register", jsonParser,async (req, res) => {
-console.log(req.body)
+console.log(req.body.password)
   try {
     //generate new password
     // we use salts which are  (new random bytes) 
