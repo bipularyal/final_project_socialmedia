@@ -2,7 +2,7 @@ import "./post.css";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -55,7 +55,7 @@ export default function Post({ post }) {
               {user.username}
               </span>
             <span className="postDate">
-              {format(post.createdAt)}
+              {post.createdAt}
               </span>
           </div>
           <div className="postTopRight">
