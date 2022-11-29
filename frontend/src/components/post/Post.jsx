@@ -7,15 +7,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Post({ post }) {
-  const [like,setLike] = useState(post.like)
-  const [isLiked,setIsLiked] = useState(false)
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    setIsLiked(post.likes.includes(currentUser._id));
-  }, [currentUser._id, post.likes]);
+  // useEffect(() => {
+  //   setIsLiked(post.likes.includes(currentUser._id));
+  // }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,13 +24,13 @@ export default function Post({ post }) {
   }, [post.userId]);
 
 
-  const likeHandler = () => {
-    try {
-      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (err) {}
-    setLike(isLiked ? like - 1 : like + 1);
-    setIsLiked(!isLiked);
-  };
+  // const likeHandler = () => {
+  //   try {
+  //     axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+  //   } catch (err) {}
+  //   setLike(isLiked ? like - 1 : like + 1);
+  //   setIsLiked(!isLiked);
+  // };
 
 
   return (
@@ -67,14 +65,14 @@ export default function Post({ post }) {
           <img className="postImg" src={PF + post.img} alt="" />
         </div>
         <div className="postBottom">
-          <div className="postBottomLeft">
+          {/* <div className="postBottomLeft">
             <img className="likeIcon" src={`${PF}like.png`} onClick={likeHandler} alt="" />
             <img className="likeIcon" src={`${PF}heart.png`} onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight">
             <span className="postCommentText">{post.comment} comments</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const users_route = require('./routes/users.js')
 const auth_route = require('./routes/authentication.js')
+const post_route = require('./routes/post.js')
+
 var bodyParser = require('body-parser')
 const multer = require('multer')
 const path = require("path")
@@ -36,6 +38,7 @@ const upload = multer({ storage: storage });
 // when we go to this page ... usersroute is run
 app.use('/api/user',users_route)
 app.use('/api/auth/',auth_route)
+app.use('/api/posts',post_route)
 
 app.post("/api/upload",upload.single("file"),(req,res)=>{
   try{
