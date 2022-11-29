@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const cors = require("cors")
+
 // database
 const mongoose = require("mongoose");
 // just makes our life a lot easier ... no need to do much things
@@ -20,7 +22,9 @@ dotenv.config();
  
 
 // middleware
+app.use(cors())
 app.use(express());
+app.use(express.json())
 app.use(helmet());
 app.use(morgan('common'));
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -36,7 +40,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // when we go to this page ... usersroute is run
-app.use('/api/user',users_route)
+app.use('/api/user/',users_route)
 app.use('/api/auth/',auth_route)
 app.use('/api/posts',post_route)
 

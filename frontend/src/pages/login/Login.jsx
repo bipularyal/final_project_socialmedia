@@ -2,15 +2,18 @@ import "./login.css";
 import { useContext, useRef } from "react";
 import { loginCall } from "../../apicall";
 import { AuthContext } from "../../context/AuthContext";
+import { Link,useNavigate } from "react-router-dom";
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
+  const navigate = useNavigate()
   const { isFetching, dispatch } = useContext(AuthContext);
-
+  const handleSwitch = ()=> {
+    navigate('/register')
+  }
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(AuthContext)
     loginCall(
       { email: email.current.value, password: password.current.value },
       dispatch
@@ -50,7 +53,7 @@ export default function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
+            <button className="loginRegisterButton" onClick={handleSwitch}>
               {isFetching ? (
                 <span></span>
               ) : (

@@ -1,11 +1,7 @@
 import "./share.css";
 // import {PermMedia, Label,Room, EmojiEmotions} from "@material-ui/icons"
 import PermMediaIcon from '@mui/icons-material/PermMedia';
-import LabelIcon from '@mui/icons-material/Label';
-import RoomIcon from '@mui/icons-material/Room';
 import CancelIcon from '@mui/icons-material/Cancel';
-
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
@@ -80,16 +76,7 @@ export default function Share() {
               />
             </label>
             <div className="shareOption">
-              <LabelIcon htmlColor="blue" className="shareIcon" />
-              <span className="shareOptionText">Tag</span>
-            </div>
-            <div className="shareOption">
-              <RoomIcon htmlColor="green" className="shareIcon" />
-              <span className="shareOptionText">Location</span>
-            </div>
-            <div className="shareOption">
-              <EmojiEmotionsIcon htmlColor="goldenrod" className="shareIcon" />
-              <span className="shareOptionText">Feelings</span>
+              <span className="shareOptionText"></span>
             </div>
           </div>
           <button className="shareButton" type="submit">

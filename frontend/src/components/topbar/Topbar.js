@@ -1,22 +1,25 @@
 import "./topbar.css";
 import SearchIcon from '@mui/icons-material/Search';
-import PersonIcon from '@mui/icons-material/Person';
-import ChatIcon from '@mui/icons-material/Chat';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 
 export default function Topbar() {
+  const navigate = useNavigate()
   const { user } = useContext(AuthContext);
   const PF = 'http://localhost:3001/public/files/'
+  const handleClick = ()=> {
+    navigate('/')
+  }
+  const handleLogout = ()=>{
+    navigate('/login')
+  }
   return (
     <HeaderContainer>
-    
       <div className="topbarLeft">
-        <span className="logo">Adverfy</span>
+        <span onClick={handleClick} className="logo">Adverfy</span>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
@@ -29,22 +32,7 @@ export default function Topbar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
-        </div>
-        <div className="topbarIcons">
-          <div className="topbarIconItem">
-            <PersonIcon />
-            <span className="topbarIconBadge">1</span>
-          </div>
-          <div className="topbarIconItem">
-            <ChatIcon />
-            <span className="topbarIconBadge">2</span>
-          </div>
-          <div className="topbarIconItem">
-            <NotificationsIcon />
-            <span className="topbarIconBadge">1</span>
-          </div>
+          <span onClick = {handleClick} className="topbarLink">Timeline</span>
         </div>
         <Link to={`/profile/${user.username}`}>
         <img
