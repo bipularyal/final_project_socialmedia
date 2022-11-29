@@ -10,7 +10,7 @@ var jsonParser = bodyParser.json()
 
 // creating a post
 router.post("/",jsonParser, async (req, res) => {
-    console.log("reached here")
+    console.log(req.body)
     const newPost = new Post(req.body);
     try {
       const savedPost = await newPost.save();

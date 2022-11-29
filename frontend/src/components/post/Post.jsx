@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function Post({ post }) {
   const [user, setUser] = useState({});
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = 'http://localhost:3001/public/files/'
   const { user: currentUser } = useContext(AuthContext);
 
   // useEffect(() => {
@@ -22,8 +22,6 @@ export default function Post({ post }) {
     };
     fetchUser();
   }, [post.userId]);
-
-
   // const likeHandler = () => {
   //   try {
   //     axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });

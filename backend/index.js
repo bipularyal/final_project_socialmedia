@@ -23,7 +23,7 @@ dotenv.config();
 app.use(express());
 app.use(helmet());
 app.use(morgan('common'));
-
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -61,4 +61,4 @@ mongoose
 
 
 // if we use /files as path name ... go to public/images instead of making a get request
-app.use("/files",express.static(path.join(__dirname,"public/images")))
+app.use("/public/files",express.static(path.join(__dirname,"public/files")))

@@ -8,7 +8,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 
 export default function Profile() {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = 'http://localhost:3001/public/files/'
   const [user, setUser] = useState({});
   const username = useParams().username;
   
