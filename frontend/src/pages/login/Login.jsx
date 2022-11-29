@@ -52,7 +52,6 @@ export default function Login() {
                 "Log In"
               )}
             </button>
-            <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton" onClick={handleSwitch}>
               {isFetching ? (
                 <span></span>
