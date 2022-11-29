@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const Post = require("../models/Post");
-const User = require("../models/User");
+const Post = require("../schema/postSchema");
+const User = require("../schema/userSchema");
 
 var bodyParser = require('body-parser')
 // create application/json parser
@@ -10,7 +10,7 @@ var jsonParser = bodyParser.json()
 
 // creating a post
 router.post("/",jsonParser, async (req, res) => {
-    
+    console.log("reached here")
     const newPost = new Post(req.body);
     try {
       const savedPost = await newPost.save();
