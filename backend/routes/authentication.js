@@ -36,6 +36,7 @@ console.log(req.body.password)
 router.post("/login", jsonParser,async (req, res) => {
   try {
     // check if username exists
+    console.log(req.body)
     const user = await User.findOne({ email: req.body.email });
     if(!user){
         console.log("invalid user")
