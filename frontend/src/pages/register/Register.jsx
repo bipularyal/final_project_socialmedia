@@ -7,12 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Register() {
+  const navigate = useNavigate()
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
   const history = useNavigate();
 
+  const handleSwitch = ()=> {
+    navigate('/login')
+  }
   const handleClick = async (e) => {
     e.preventDefault();
 
@@ -72,10 +76,11 @@ export default function Register() {
               className="loginInput"
               type="password"
             />
+            
             <button className="loginButton" type="submit">
               Sign Up
             </button>
-            <button className="loginRegisterButton">Log into Account</button>
+            <button className="loginRegisterButton" onClick={handleSwitch}>Log into Account</button>
           </form>
         </div>
       </div>

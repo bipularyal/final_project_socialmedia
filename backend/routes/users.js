@@ -54,10 +54,7 @@ router.put("/:id",jsonParser, async (req, res) => {
 //get a user 
 
 router.get("/:id",jsonParser, async (req, res) => {
-
-  // We can query using either userId or username ...both will work because we are querying for userid localhost:8000/username=8329 or id=42890323
-  const userId = req.query.userId;
-  const username = req.query.username;
+  const userId = req.params.id;
     try {
       const user = userId
       ? await User.findById(userId)

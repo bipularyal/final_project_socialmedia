@@ -13,7 +13,7 @@ export default function Rightbar({ user }) {
   )
 }
 // export default function Rightbar({ user }) {
-//   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+//   const PF = 'http://localhost:3001/public/files/'
 //   const [friends, setFriends] = useState([]);
 //   const { user: currentUser, dispatch } = useContext(AuthContext);
 //   const [followed, setFollowed] = useState(

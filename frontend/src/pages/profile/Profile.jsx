@@ -1,3 +1,5 @@
+
+
 import "./profile.css";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -8,10 +10,19 @@ import axios from "axios";
 import { useParams } from "react-router";
 
 export default function Profile() {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const PF = 'http://localhost:3001/public/files/';
   const [user, setUser] = useState({});
   const username = useParams().username;
-  
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      console.log(res)
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [username]);
+
   return (
     <>
       <Topbar />
@@ -40,6 +51,7 @@ export default function Profile() {
               />
             </div>
             <div className="profileInfo">
+              {console.log(user)}
               <h4 className="profileInfoName">{user.username}</h4>
               <span className="profileInfoDesc">{user.desc}</span>
             </div>
