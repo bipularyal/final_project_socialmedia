@@ -35,7 +35,7 @@ const upload = multer({ storage: storage });
 
 // when we go to this page ... usersroute is run
 app.use('/api/user',users_route)
-app.use('/register',auth_route)
+app.use('/api/auth/',auth_route)
 
 app.post("/api/upload",upload.single("file"),(req,res)=>{
   try{

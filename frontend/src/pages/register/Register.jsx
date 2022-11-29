@@ -15,6 +15,7 @@ export default function Register() {
 
   const handleClick = async (e) => {
     e.preventDefault();
+
     if (passwordAgain.current.value !== password.current.value) {
       passwordAgain.current.setCustomValidity("Passwords don't match!");
     } else {
@@ -25,7 +26,7 @@ export default function Register() {
       };
       try {
         await axios.post("/auth/register", user);
-        history.push("/login");
+        history("/login");
       } catch (err) {
         console.log(err);
       }
@@ -36,9 +37,9 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Adverfy</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+          Find experts your field
           </span>
         </div>
         <div className="loginRight">
